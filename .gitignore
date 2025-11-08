@@ -44,3 +44,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# GoReleaser
+dist/
+*.tar.gz
+*.zip
+checksums.txt

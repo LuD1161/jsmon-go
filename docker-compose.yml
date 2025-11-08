@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  jsmon:
+    image: ghcr.io/aseemshrey/jsmon-go:latest
+    container_name: jsmon
+    restart: "no"  # Change to "always" for continuous monitoring
+    volumes:
+      # Mount configuration
+      - ./.env:/app/.env:ro
+
+      # Mount targets directory
+      - ./targets:/app/targets:ro
+
+      # Mount state file (persists monitoring state)
+      - ./jsmon.json:/app/jsmon.json:rw
+
+      # Mount downloads directory (stores fetched content)
+      - ./downloads:/app/downloads:rw
+
+    # Optional: Set timezone
+    # environment:
+    #   - TZ=America/New_York
+
+    # Optional: Resource limits
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '0.5'
+    #       memory: 128M
+    #     reservations:
+    #       cpus: '0.25'
+    #       memory: 64M

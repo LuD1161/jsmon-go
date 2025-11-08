@@ -1,0 +1,202 @@
+# GoReleaser configuration for JSMon-Go
+# Documentation: https://goreleaser.com
+
+version: 2
+
+before:
+  hooks:
+    # Update dependencies
+    - go mod tidy
+    # Run tests (uncomment when tests are added)
+    # - go test -v ./...
+
+builds:
+  - id: jsmon
+    main: ./cmd/jsmon
+    binary: jsmon
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    # Ignore combinations that don't make sense
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+    flags:
+      - -trimpath
+
+archives:
+  - id: jsmon-archive
+    format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE
+      - .env.example
+
+checksum:
+  name_template: 'checksums.txt'
+  algorithm: sha256
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+      - '^ci:'
+      - Merge pull request
+      - Merge branch
+  groups:
+    - title: 'New Features'
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: 'Bug Fixes'
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: 'Performance Improvements'
+      regexp: '^.*?perf(\([[:word:]]+\))??!?:.+$'
+      order: 2
+    - title: 'Other Changes'
+      order: 999
+
+# Docker images configuration
+dockers:
+  # Build for amd64
+  - image_templates:
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/aseemshrey/jsmon-go:latest-amd64"
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+      - "--label=org.opencontainers.image.source=https://github.com/aseemshrey/jsmon-go"
+      - "--label=org.opencontainers.image.description=JavaScript Change Monitor for Bug Bounty"
+      - "--label=org.opencontainers.image.licenses=MIT"
+    goos: linux
+    goarch: amd64
+
+  # Build for arm64
+  - image_templates:
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
+      - "ghcr.io/aseemshrey/jsmon-go:latest-arm64"
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/arm64"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+      - "--label=org.opencontainers.image.source=https://github.com/aseemshrey/jsmon-go"
+      - "--label=org.opencontainers.image.description=JavaScript Change Monitor for Bug Bounty"
+      - "--label=org.opencontainers.image.licenses=MIT"
+    goos: linux
+    goarch: arm64
+
+# Create multi-arch manifest
+docker_manifests:
+  # Latest tag
+  - name_template: "ghcr.io/aseemshrey/jsmon-go:latest"
+    image_templates:
+      - "ghcr.io/aseemshrey/jsmon-go:latest-amd64"
+      - "ghcr.io/aseemshrey/jsmon-go:latest-arm64"
+
+  # Version tag
+  - name_template: "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}"
+    image_templates:
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
+
+  # Major version tag (e.g., v1)
+  - name_template: "ghcr.io/aseemshrey/jsmon-go:v{{ .Major }}"
+    image_templates:
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
+
+  # Major.Minor version tag (e.g., v1.0)
+  - name_template: "ghcr.io/aseemshrey/jsmon-go:v{{ .Major }}.{{ .Minor }}"
+    image_templates:
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
+
+# GitHub release configuration
+release:
+  github:
+    owner: aseemshrey
+    name: jsmon-go
+  draft: false
+  prerelease: auto
+  mode: replace
+  header: |
+    ## JSMon-Go {{ .Version }}
+
+    JavaScript Change Monitor for Bug Bounty Hunting
+
+    ### Installation
+
+    **Docker:**
+    ```bash
+    docker pull ghcr.io/aseemshrey/jsmon-go:{{ .Version }}
+    ```
+
+    **Binary:**
+    Download the appropriate binary for your platform below.
+  footer: |
+    ---
+
+    **Full Changelog**: https://github.com/aseemshrey/jsmon-go/compare/{{ .PreviousTag }}...{{ .Tag }}
+
+    **Docker Images**: Available at `ghcr.io/aseemshrey/jsmon-go:{{ .Version }}`
+
+# Homebrew tap (optional - uncomment if you create a tap)
+# brews:
+#   - name: jsmon
+#     repository:
+#       owner: aseemshrey
+#       name: homebrew-tap
+#     folder: Formula
+#     homepage: https://github.com/aseemshrey/jsmon-go
+#     description: JavaScript Change Monitor for Bug Bounty Hunting
+#     license: MIT
+#     dependencies:
+#       - name: ca-certificates
+#     install: |
+#       bin.install "jsmon"
+#     test: |
+#       system "#{bin}/jsmon --version"
+
+# Announce (optional - uncomment to enable)
+# announce:
+#   twitter:
+#     enabled: true
+#     message_template: 'JSMon-Go {{ .Tag }} is out! Check it out at {{ .ReleaseURL }}'

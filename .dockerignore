@@ -1,0 +1,46 @@
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Build artifacts
+bin/
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test files
+*_test.go
+testdata/
+
+# Runtime data (don't include in image)
+targets/
+downloads/
+jsmon.json
+.env
+
+# Documentation
+*.md
+!README.md
+docs/
+MIGRATION_SUMMARY.md
+
+# CI/CD
+.github/
+.goreleaser.yml
+
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
