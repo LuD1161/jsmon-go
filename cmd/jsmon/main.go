@@ -77,6 +77,10 @@ func main() {
 		fmt.Println("✓ Discord notifications enabled")
 	}
 
+	if len(notifiers) == 0 {
+		fmt.Println("⚠ No notifications enabled - changes will be logged locally only")
+	}
+
 	multiNotifier := notifier.NewMultiNotifier(notifiers...)
 
 	// Create fetcher and differ

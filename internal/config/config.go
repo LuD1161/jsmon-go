@@ -44,10 +44,7 @@ func Load() (*Config, error) {
 		NotifyDiscord:  getBoolEnv("JSMON_NOTIFY_DISCORD", false),
 	}
 
-	// Validate that at least one notification method is configured
-	if !cfg.NotifyTelegram && !cfg.NotifySlack && !cfg.NotifyDiscord {
-		return nil, fmt.Errorf("at least one notification method must be enabled")
-	}
+	// Note: Notifications are optional - tool can run without them for local monitoring
 
 	// Validate Telegram config if enabled
 	if cfg.NotifyTelegram {
