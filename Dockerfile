@@ -48,10 +48,10 @@ USER 65532:65532
 # Labels for OCI image spec
 LABEL org.opencontainers.image.title="JSMon-Go"
 LABEL org.opencontainers.image.description="JavaScript Change Monitor for Bug Bounty Hunting"
-LABEL org.opencontainers.image.authors="aseemshrey"
-LABEL org.opencontainers.image.source="https://github.com/aseemshrey/jsmon-go"
+LABEL org.opencontainers.image.authors="LuD1161"
+LABEL org.opencontainers.image.source="https://github.com/LuD1161/jsmon-go"
 LABEL org.opencontainers.image.licenses="MIT"
-LABEL org.opencontainers.image.documentation="https://github.com/aseemshrey/jsmon-go#readme"
+LABEL org.opencontainers.image.documentation="https://github.com/LuD1161/jsmon-go#readme"
 
 # Runtime expects these directories to be mounted:
 # - /app/targets    - Target files

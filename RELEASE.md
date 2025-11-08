@@ -31,7 +31,7 @@ The project uses GoReleaser with GitHub Actions for fully automated releases.
    ```
 
 3. **Monitor the release**
-   - Go to: https://github.com/aseemshrey/jsmon-go/actions
+   - Go to: https://github.com/LuD1161/jsmon-go/actions
    - Watch the "Release" workflow run
    - It will automatically:
      - Build binaries for all platforms (Linux, macOS, Windows)
@@ -41,8 +41,8 @@ The project uses GoReleaser with GitHub Actions for fully automated releases.
      - Create version tags (latest, v1, v1.0, v1.0.0)
 
 4. **Verify the release**
-   - Check GitHub releases: https://github.com/aseemshrey/jsmon-go/releases
-   - Check Docker images: https://github.com/aseemshrey/jsmon-go/pkgs/container/jsmon-go
+   - Check GitHub releases: https://github.com/LuD1161/jsmon-go/releases
+   - Check Docker images: https://github.com/LuD1161/jsmon-go/pkgs/container/jsmon-go
    - Test a binary download
    - Test Docker image pull
 
@@ -88,7 +88,7 @@ Follow [Semantic Versioning](https://semver.org/):
 - Windows: amd64
 
 ### Docker Images
-All images pushed to `ghcr.io/aseemshrey/jsmon-go`:
+All images pushed to `ghcr.io/LuD1161/jsmon-go`:
 
 - `latest` - Latest release (multi-arch)
 - `v1` - Latest v1.x.x (multi-arch)
@@ -112,7 +112,7 @@ All images pushed to `ghcr.io/aseemshrey/jsmon-go`:
 
 ### Docker push fails
 - Ensure GitHub Container Registry is enabled
-- Check package permissions: https://github.com/aseemshrey/jsmon-go/settings/packages
+- Check package permissions: https://github.com/LuD1161/jsmon-go/settings/packages
 
 ### Tag already exists
 ```bash

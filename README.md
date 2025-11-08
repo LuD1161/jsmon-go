@@ -4,10 +4,10 @@
 
 **JavaScript Change Monitor for Bug Bounty Hunting**
 
-[![Go Version](https://img.shields.io/github/go-mod/go-version/aseemshrey/jsmon-go)](https://go.dev/)
-[![Release](https://img.shields.io/github/v/release/aseemshrey/jsmon-go)](https://github.com/aseemshrey/jsmon-go/releases)
-[![License](https://img.shields.io/github/license/aseemshrey/jsmon-go)](LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/aseemshrey/jsmon-go)](https://goreportcard.com/report/github.com/aseemshrey/jsmon-go)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/LuD1161/jsmon-go)](https://go.dev/)
+[![Release](https://img.shields.io/github/v/release/LuD1161/jsmon-go)](https://github.com/LuD1161/jsmon-go/releases)
+[![License](https://img.shields.io/github/license/LuD1161/jsmon-go)](LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/LuD1161/jsmon-go)](https://goreportcard.com/report/github.com/LuD1161/jsmon-go)
 
 A high-performance Go rewrite of the original [JSMon](https://github.com/robre/jsmon) Python tool. Monitor JavaScript files on websites and get notified when they change, helping you discover new attack surfaces and vulnerabilities during bug bounty hunting.
 
@@ -45,7 +45,7 @@ A high-performance Go rewrite of the original [JSMon](https://github.com/robre/j
 
 ```bash
 # Download binary (Linux example)
-wget https://github.com/aseemshrey/jsmon-go/releases/latest/download/jsmon-linux-amd64
+wget https://github.com/LuD1161/jsmon-go/releases/latest/download/jsmon-linux-amd64
 chmod +x jsmon-linux-amd64
 sudo mv jsmon-linux-amd64 /usr/local/bin/jsmon
 
@@ -76,7 +76,7 @@ jsmon
 
 ```bash
 # Pull the image
-docker pull ghcr.io/aseemshrey/jsmon-go:latest
+docker pull ghcr.io/LuD1161/jsmon-go:latest
 
 # Run with mounted volumes
 docker run --rm \
@@ -84,22 +84,22 @@ docker run --rm \
   -v $(pwd)/downloads:/app/downloads \
   -v $(pwd)/jsmon.json:/app/jsmon.json \
   -v $(pwd)/.env:/app/.env \
-  ghcr.io/aseemshrey/jsmon-go:latest
+  ghcr.io/LuD1161/jsmon-go:latest
 ```
 
 ### Option 2: Pre-built Binary
 
-Download the latest release for your platform from the [Releases](https://github.com/aseemshrey/jsmon-go/releases) page:
+Download the latest release for your platform from the [Releases](https://github.com/LuD1161/jsmon-go/releases) page:
 
 **Linux:**
 ```bash
 # amd64
-wget https://github.com/aseemshrey/jsmon-go/releases/latest/download/jsmon-linux-amd64
+wget https://github.com/LuD1161/jsmon-go/releases/latest/download/jsmon-linux-amd64
 chmod +x jsmon-linux-amd64
 sudo mv jsmon-linux-amd64 /usr/local/bin/jsmon
 
 # arm64
-wget https://github.com/aseemshrey/jsmon-go/releases/latest/download/jsmon-linux-arm64
+wget https://github.com/LuD1161/jsmon-go/releases/latest/download/jsmon-linux-arm64
 chmod +x jsmon-linux-arm64
 sudo mv jsmon-linux-arm64 /usr/local/bin/jsmon
 ```
@@ -107,12 +107,12 @@ sudo mv jsmon-linux-arm64 /usr/local/bin/jsmon
 **macOS:**
 ```bash
 # Apple Silicon (M1/M2/M3)
-curl -L https://github.com/aseemshrey/jsmon-go/releases/latest/download/jsmon-darwin-arm64 -o jsmon
+curl -L https://github.com/LuD1161/jsmon-go/releases/latest/download/jsmon-darwin-arm64 -o jsmon
 chmod +x jsmon
 sudo mv jsmon /usr/local/bin/jsmon
 
 # Intel
-curl -L https://github.com/aseemshrey/jsmon-go/releases/latest/download/jsmon-darwin-amd64 -o jsmon
+curl -L https://github.com/LuD1161/jsmon-go/releases/latest/download/jsmon-darwin-amd64 -o jsmon
 chmod +x jsmon
 sudo mv jsmon /usr/local/bin/jsmon
 ```
@@ -120,14 +120,14 @@ sudo mv jsmon /usr/local/bin/jsmon
 **Windows:**
 ```powershell
 # Download from releases page and add to PATH
-# https://github.com/aseemshrey/jsmon-go/releases/latest/download/jsmon-windows-amd64.exe
+# https://github.com/LuD1161/jsmon-go/releases/latest/download/jsmon-windows-amd64.exe
 ```
 
 ### Option 3: Build from Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/aseemshrey/jsmon-go.git
+git clone https://github.com/LuD1161/jsmon-go.git
 cd jsmon-go
 
 # Build for current platform
@@ -143,7 +143,7 @@ make build-all
 ### Option 4: Go Install
 
 ```bash
-go install github.com/aseemshrey/jsmon-go/cmd/jsmon@latest
+go install github.com/LuD1161/jsmon-go/cmd/jsmon@latest
 ```
 
 ## Configuration
@@ -297,7 +297,7 @@ WantedBy=timers.target
 version: '3.8'
 services:
   jsmon:
-    image: ghcr.io/aseemshrey/jsmon-go:latest
+    image: ghcr.io/LuD1161/jsmon-go:latest
     volumes:
       - ./targets:/app/targets
       - ./downloads:/app/downloads
@@ -317,10 +317,10 @@ Then run via cron:
 
 ```bash
 # Pull the latest image
-docker pull ghcr.io/aseemshrey/jsmon-go:latest
+docker pull ghcr.io/LuD1161/jsmon-go:latest
 
 # Or a specific version
-docker pull ghcr.io/aseemshrey/jsmon-go:v1.0.0
+docker pull ghcr.io/LuD1161/jsmon-go:v1.0.0
 
 # Run with mounted volumes
 docker run --rm \
@@ -328,7 +328,7 @@ docker run --rm \
   -v $(pwd)/downloads:/app/downloads \
   -v $(pwd)/jsmon.json:/app/jsmon.json \
   -v $(pwd)/.env:/app/.env \
-  ghcr.io/aseemshrey/jsmon-go:latest
+  ghcr.io/LuD1161/jsmon-go:latest
 ```
 
 ### Building Locally
@@ -493,7 +493,7 @@ jsmon-go/
 Contributions are welcome! Here's how you can help:
 
 ### Reporting Bugs
-1. Check existing [issues](https://github.com/aseemshrey/jsmon-go/issues)
+1. Check existing [issues](https://github.com/LuD1161/jsmon-go/issues)
 2. Create a new issue with detailed reproduction steps
 3. Include your OS, Go version, and JSMon version
 
@@ -513,7 +513,7 @@ Contributions are welcome! Here's how you can help:
 
 ### Development Setup
 ```bash
-git clone https://github.com/aseemshrey/jsmon-go.git
+git clone https://github.com/LuD1161/jsmon-go.git
 cd jsmon-go
 make deps
 make build
@@ -544,9 +544,9 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- 📖 [Documentation](https://github.com/aseemshrey/jsmon-go#readme)
-- 🐛 [Report Issues](https://github.com/aseemshrey/jsmon-go/issues)
-- 💬 [Discussions](https://github.com/aseemshrey/jsmon-go/discussions)
+- 📖 [Documentation](https://github.com/LuD1161/jsmon-go#readme)
+- 🐛 [Report Issues](https://github.com/LuD1161/jsmon-go/issues)
+- 💬 [Discussions](https://github.com/LuD1161/jsmon-go/discussions)
 
 ---
 

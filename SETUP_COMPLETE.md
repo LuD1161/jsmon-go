@@ -132,26 +132,26 @@ git push origin v1.0.0
 
 ### 5. Monitor the Release
 
-1. Go to: https://github.com/aseemshrey/jsmon-go/actions
+1. Go to: https://github.com/LuD1161/jsmon-go/actions
 2. Watch the "Release" workflow run
 3. After ~5-10 minutes, check:
-   - **Releases**: https://github.com/aseemshrey/jsmon-go/releases
-   - **Docker Images**: https://github.com/aseemshrey/jsmon-go/pkgs/container/jsmon-go
+   - **Releases**: https://github.com/LuD1161/jsmon-go/releases
+   - **Docker Images**: https://github.com/LuD1161/jsmon-go/pkgs/container/jsmon-go
 
 ### 6. Test the Release
 
 ```bash
 # Test binary download
-wget https://github.com/aseemshrey/jsmon-go/releases/download/v1.0.0/jsmon-linux-amd64
+wget https://github.com/LuD1161/jsmon-go/releases/download/v1.0.0/jsmon-linux-amd64
 chmod +x jsmon-linux-amd64
 ./jsmon-linux-amd64 --version
 
 # Test Docker image
-docker pull ghcr.io/aseemshrey/jsmon-go:v1.0.0
-docker pull ghcr.io/aseemshrey/jsmon-go:latest
+docker pull ghcr.io/LuD1161/jsmon-go:v1.0.0
+docker pull ghcr.io/LuD1161/jsmon-go:latest
 
 # Verify multi-arch
-docker manifest inspect ghcr.io/aseemshrey/jsmon-go:latest
+docker manifest inspect ghcr.io/LuD1161/jsmon-go:latest
 ```
 
 ## GitHub Container Registry Setup
@@ -159,7 +159,7 @@ docker manifest inspect ghcr.io/aseemshrey/jsmon-go:latest
 The workflow will automatically push to GHCR, but ensure:
 
 1. **Package Visibility**:
-   - After first release, go to: https://github.com/aseemshrey?tab=packages
+   - After first release, go to: https://github.com/LuD1161?tab=packages
    - Find `jsmon-go` package
    - Settings → Change visibility to Public (if desired)
 
@@ -173,7 +173,7 @@ The workflow will automatically push to GHCR, but ensure:
 
 ```bash
 # Pull latest
-docker pull ghcr.io/aseemshrey/jsmon-go:latest
+docker pull ghcr.io/LuD1161/jsmon-go:latest
 
 # Run with volumes
 docker run --rm \
@@ -181,7 +181,7 @@ docker run --rm \
   -v $(pwd)/downloads:/app/downloads \
   -v $(pwd)/jsmon.json:/app/jsmon.json \
   -v $(pwd)/.env:/app/.env \
-  ghcr.io/aseemshrey/jsmon-go:latest
+  ghcr.io/LuD1161/jsmon-go:latest
 ```
 
 ### With Docker Compose
@@ -219,8 +219,8 @@ Before announcing your release:
 Add these to your README after v1.0.0 is released:
 
 ```markdown
-[![Docker Pulls](https://img.shields.io/docker/pulls/aseemshrey/jsmon-go)](https://github.com/aseemshrey/jsmon-go/pkgs/container/jsmon-go)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/aseemshrey/jsmon-go/release.yml)](https://github.com/aseemshrey/jsmon-go/actions)
+[![Docker Pulls](https://img.shields.io/docker/pulls/LuD1161/jsmon-go)](https://github.com/LuD1161/jsmon-go/pkgs/container/jsmon-go)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/LuD1161/jsmon-go/release.yml)](https://github.com/LuD1161/jsmon-go/actions)
 ```
 
 ## Troubleshooting

@@ -7,11 +7,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/aseemshrey/jsmon-go/internal/config"
-	"github.com/aseemshrey/jsmon-go/internal/differ"
-	"github.com/aseemshrey/jsmon-go/internal/fetcher"
-	"github.com/aseemshrey/jsmon-go/internal/notifier"
-	"github.com/aseemshrey/jsmon-go/internal/storage"
+	"github.com/LuD1161/jsmon-go/internal/config"
+	"github.com/LuD1161/jsmon-go/internal/differ"
+	"github.com/LuD1161/jsmon-go/internal/fetcher"
+	"github.com/LuD1161/jsmon-go/internal/notifier"
+	"github.com/LuD1161/jsmon-go/internal/storage"
 )
 
 func main() {

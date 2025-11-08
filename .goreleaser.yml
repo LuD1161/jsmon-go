@@ -89,8 +89,8 @@ changelog:
 dockers:
   # Build for amd64
   - image_templates:
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
-      - "ghcr.io/aseemshrey/jsmon-go:latest-amd64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/lud1161/jsmon-go:latest-amd64"
     use: buildx
     dockerfile: Dockerfile
     build_flag_templates:
@@ -99,7 +99,7 @@ dockers:
       - "--label=org.opencontainers.image.title={{.ProjectName}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--label=org.opencontainers.image.source=https://github.com/aseemshrey/jsmon-go"
+      - "--label=org.opencontainers.image.source=https://github.com/LuD1161/jsmon-go"
       - "--label=org.opencontainers.image.description=JavaScript Change Monitor for Bug Bounty"
       - "--label=org.opencontainers.image.licenses=MIT"
     goos: linux
@@ -107,8 +107,8 @@ dockers:
 
   # Build for arm64
   - image_templates:
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
-      - "ghcr.io/aseemshrey/jsmon-go:latest-arm64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-arm64"
+      - "ghcr.io/lud1161/jsmon-go:latest-arm64"
     use: buildx
     dockerfile: Dockerfile
     build_flag_templates:
@@ -117,7 +117,7 @@ dockers:
       - "--label=org.opencontainers.image.title={{.ProjectName}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--label=org.opencontainers.image.source=https://github.com/aseemshrey/jsmon-go"
+      - "--label=org.opencontainers.image.source=https://github.com/LuD1161/jsmon-go"
       - "--label=org.opencontainers.image.description=JavaScript Change Monitor for Bug Bounty"
       - "--label=org.opencontainers.image.licenses=MIT"
     goos: linux
@@ -126,33 +126,33 @@ dockers:
 # Create multi-arch manifest
 docker_manifests:
   # Latest tag
-  - name_template: "ghcr.io/aseemshrey/jsmon-go:latest"
+  - name_template: "ghcr.io/lud1161/jsmon-go:latest"
     image_templates:
-      - "ghcr.io/aseemshrey/jsmon-go:latest-amd64"
-      - "ghcr.io/aseemshrey/jsmon-go:latest-arm64"
+      - "ghcr.io/lud1161/jsmon-go:latest-amd64"
+      - "ghcr.io/lud1161/jsmon-go:latest-arm64"
 
   # Version tag
-  - name_template: "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}"
+  - name_template: "ghcr.io/lud1161/jsmon-go:{{ .Version }}"
     image_templates:
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-arm64"
 
   # Major version tag (e.g., v1)
-  - name_template: "ghcr.io/aseemshrey/jsmon-go:v{{ .Major }}"
+  - name_template: "ghcr.io/lud1161/jsmon-go:v{{ .Major }}"
     image_templates:
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-arm64"
 
   # Major.Minor version tag (e.g., v1.0)
-  - name_template: "ghcr.io/aseemshrey/jsmon-go:v{{ .Major }}.{{ .Minor }}"
+  - name_template: "ghcr.io/lud1161/jsmon-go:v{{ .Major }}.{{ .Minor }}"
     image_templates:
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-amd64"
-      - "ghcr.io/aseemshrey/jsmon-go:{{ .Version }}-arm64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-amd64"
+      - "ghcr.io/lud1161/jsmon-go:{{ .Version }}-arm64"
 
 # GitHub release configuration
 release:
   github:
-    owner: aseemshrey
+    owner: LuD1161
     name: jsmon-go
   draft: false
   prerelease: auto
@@ -174,9 +174,9 @@ release:
   footer: |
     ---
 
-    **Full Changelog**: https://github.com/aseemshrey/jsmon-go/compare/{{ .PreviousTag }}...{{ .Tag }}
+    **Full Changelog**: https://github.com/LuD1161/jsmon-go/compare/{{ .PreviousTag }}...{{ .Tag }}
 
-    **Docker Images**: Available at `ghcr.io/aseemshrey/jsmon-go:{{ .Version }}`
+    **Docker Images**: Available at `ghcr.io/lud1161/jsmon-go:{{ .Version }}`
 
 # Homebrew tap (optional - uncomment if you create a tap)
 # brews:

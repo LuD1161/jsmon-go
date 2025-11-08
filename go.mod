@@ -1,4 +1,4 @@
-module github.com/aseemshrey/jsmon-go
+module github.com/LuD1161/jsmon-go
 
 go 1.22
 

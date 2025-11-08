@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   jsmon:
-    image: ghcr.io/aseemshrey/jsmon-go:latest
+    image: ghcr.io/LuD1161/jsmon-go:latest
     container_name: jsmon
     restart: "no"  # Change to "always" for continuous monitoring
     volumes:
