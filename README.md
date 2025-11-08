@@ -6,8 +6,8 @@
 
 [![Go Version](https://img.shields.io/github/go-mod/go-version/LuD1161/jsmon-go)](https://go.dev/)
 [![Release](https://img.shields.io/github/v/release/LuD1161/jsmon-go)](https://github.com/LuD1161/jsmon-go/releases)
-[![License](https://img.shields.io/github/license/LuD1161/jsmon-go)](LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/LuD1161/jsmon-go)](https://goreportcard.com/report/github.com/LuD1161/jsmon-go)
+[![License](https://img.shields.io/github/license/LuD1161/jsmon-go?)](LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/LuD1161/jsmon-go?)](https://goreportcard.com/report/github.com/LuD1161/jsmon-go)
 
 A high-performance Go rewrite of the original [JSMon](https://github.com/robre/jsmon) Python tool. Monitor JavaScript files on websites and get notified when they change, helping you discover new attack surfaces and vulnerabilities during bug bounty hunting.
 
