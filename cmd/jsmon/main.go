@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -14,7 +15,42 @@ import (
 	"github.com/LuD1161/jsmon-go/internal/storage"
 )
 
+const version = "1.0.0"
+
 func main() {
+	// Parse command line flags
+	showHelp := flag.Bool("h", false, "Show help")
+	showVersion := flag.Bool("v", false, "Show version")
+	flag.Parse()
+
+	if *showVersion {
+		fmt.Printf("JSMon-Go v%s\n", version)
+		return
+	}
+
+	if *showHelp {
+		fmt.Println("JSMon - Web File Monitor (Go Edition)")
+		fmt.Printf("Version: %s\n\n", version)
+		fmt.Println("Usage: jsmon [options]")
+		fmt.Println("\nOptions:")
+		fmt.Println("  -h    Show help")
+		fmt.Println("  -v    Show version")
+		fmt.Println("\nConfiguration:")
+		fmt.Println("  Create a .env file or set environment variables:")
+		fmt.Println("    JSMON_NOTIFY_TELEGRAM=true")
+		fmt.Println("    JSMON_TELEGRAM_TOKEN=your_token")
+		fmt.Println("    JSMON_TELEGRAM_CHAT_ID=your_chat_id")
+		fmt.Println("\n  Similar variables for SLACK and DISCORD")
+		fmt.Println("  Notifications are optional - omit them for local monitoring")
+		fmt.Println("\nTargets:")
+		fmt.Println("  Add URLs to files in targets/ directory (one per line)")
+		fmt.Println("\nExample:")
+		fmt.Println("  mkdir targets")
+		fmt.Println("  echo 'https://example.com/app.js' > targets/example")
+		fmt.Println("  jsmon")
+		return
+	}
+
 	fmt.Println("JSMon - Web File Monitor (Go Edition)")
 
 	// Load configuration
