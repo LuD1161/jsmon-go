@@ -334,8 +334,8 @@ docker run --rm \
 ### Building Locally
 
 ```bash
-# Build the image
-docker build -t jsmon-go .
+# Build the image from source (uses Dockerfile.standalone)
+docker build -f Dockerfile.standalone -t jsmon-go .
 
 # Run it
 docker run --rm \
@@ -345,6 +345,8 @@ docker run --rm \
   -v $(pwd)/.env:/app/.env \
   jsmon-go
 ```
+
+**Note**: The default `Dockerfile` is optimized for GoReleaser (expects pre-built binary). For building from source, use `Dockerfile.standalone`.
 
 ### Why Distroless?
 
