@@ -15,7 +15,7 @@ import (
 	"github.com/LuD1161/jsmon-go/internal/storage"
 )
 
-const version = "1.0.0"
+const version = "1.0.1"
 
 func main() {
 	// Parse command line flags
