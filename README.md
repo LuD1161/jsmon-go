@@ -45,7 +45,7 @@ A high-performance Go rewrite of the original [JSMon](https://github.com/robre/j
 
 ```bash
 # Download and extract binary (Linux amd64 example)
-VERSION=1.0.0  # Check https://github.com/LuD1161/jsmon-go/releases for latest
+VERSION=1.0.1  # Check https://github.com/LuD1161/jsmon-go/releases for latest
 curl -L https://github.com/LuD1161/jsmon-go/releases/download/v${VERSION}/jsmon-go_${VERSION}_Linux_x86_64.tar.gz | tar xz
 sudo mv jsmon /usr/local/bin/jsmon
 
@@ -91,17 +91,17 @@ docker run --rm \
 
 Download the latest release for your platform from the [Releases](https://github.com/LuD1161/jsmon-go/releases) page.
 
-**Note**: Replace `VERSION` with the latest version (e.g., `1.0.0`) from the [releases page](https://github.com/LuD1161/jsmon-go/releases).
+**Note**: Replace `VERSION` with the latest version (e.g., `1.0.1`) from the [releases page](https://github.com/LuD1161/jsmon-go/releases).
 
 **Linux:**
 ```bash
 # amd64
-VERSION=1.0.0
+VERSION=1.0.1
 curl -L https://github.com/LuD1161/jsmon-go/releases/download/v${VERSION}/jsmon-go_${VERSION}_Linux_x86_64.tar.gz | tar xz
 sudo mv jsmon /usr/local/bin/jsmon
 
 # arm64
-VERSION=1.0.0
+VERSION=1.0.1
 curl -L https://github.com/LuD1161/jsmon-go/releases/download/v${VERSION}/jsmon-go_${VERSION}_Linux_arm64.tar.gz | tar xz
 sudo mv jsmon /usr/local/bin/jsmon
 ```
@@ -109,20 +109,20 @@ sudo mv jsmon /usr/local/bin/jsmon
 **macOS:**
 ```bash
 # Apple Silicon (M1/M2/M3)
-VERSION=1.0.0
+VERSION=1.0.1
 curl -L https://github.com/LuD1161/jsmon-go/releases/download/v${VERSION}/jsmon-go_${VERSION}_Darwin_arm64.tar.gz | tar xz
 sudo mv jsmon /usr/local/bin/jsmon
 
 # Intel
-VERSION=1.0.0
+VERSION=1.0.1
 curl -L https://github.com/LuD1161/jsmon-go/releases/download/v${VERSION}/jsmon-go_${VERSION}_Darwin_x86_64.tar.gz | tar xz
 sudo mv jsmon /usr/local/bin/jsmon
 ```
 
 **Windows:**
 ```powershell
-# Download and extract (replace 1.0.0 with latest version)
-$VERSION = "1.0.0"
+# Download and extract (replace 1.0.1 with latest version)
+$VERSION = "1.0.1"
 curl -L -o jsmon-go.zip "https://github.com/LuD1161/jsmon-go/releases/download/v$VERSION/jsmon-go_${VERSION}_Windows_x86_64.zip"
 Expand-Archive jsmon-go.zip -DestinationPath .
 # Move jsmon.exe to a directory in your PATH
@@ -325,7 +325,7 @@ Then run via cron:
 docker pull ghcr.io/LuD1161/jsmon-go:latest
 
 # Or a specific version
-docker pull ghcr.io/LuD1161/jsmon-go:v1.0.0
+docker pull ghcr.io/LuD1161/jsmon-go:v1.0.1
 
 # Run with mounted volumes
 docker run --rm \
